@@ -34,6 +34,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+@SuppressWarnings("serial")
 public class MenjacnicaGUI extends JFrame {
 
 	private JPanel contentPane;
@@ -53,7 +54,7 @@ public class MenjacnicaGUI extends JFrame {
 	private JMenuItem mntmAbout;
 	private JScrollPane tabelScrollPane;
 	private JScrollPane sScrollPane;
-	private JTextArea textArea;
+	private JTextArea southTextArea;
 	private JPopupMenu popupMenu;
 	private JMenuItem mntmDodajKurs;
 	private JMenuItem mntmObrisiKurs;
@@ -114,6 +115,11 @@ public class MenjacnicaGUI extends JFrame {
 	private JButton getBtnDodajKurs() {
 		if (btnDodajKurs == null) {
 			btnDodajKurs = new JButton("Dodaj kurs");
+			btnDodajKurs.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.otvoriProzorDodajKursGUI();
+				}
+			});
 			btnDodajKurs.setPreferredSize(new Dimension(120, 23));
 		}
 		return btnDodajKurs;
@@ -222,7 +228,7 @@ public class MenjacnicaGUI extends JFrame {
 				public void actionPerformed(ActionEvent arg0) {
 					String putanja = GUIKontroler.izaberiFajl();
 					if(!putanja.isEmpty()){
-						GUIKontroler.upisiText(textArea.getText() + "Ucitan fajl: " + putanja+"\n", textArea);
+						GUIKontroler.upisiText(southTextArea.getText() + "Ucitan fajl: " + putanja+"\n", southTextArea);
 					}
 				}
 			});
@@ -238,7 +244,7 @@ public class MenjacnicaGUI extends JFrame {
 				public void actionPerformed(ActionEvent arg0) {
 					String putanja = GUIKontroler.sacuvajFajl();
 					if(!putanja.isEmpty()){
-						GUIKontroler.upisiText(textArea.getText() + "Sacuvan fajl: " + putanja+"\n", textArea);
+						GUIKontroler.upisiText(southTextArea.getText() + "Sacuvan fajl: " + putanja+"\n", southTextArea);
 					}
 				}
 			});
@@ -275,16 +281,16 @@ public class MenjacnicaGUI extends JFrame {
 	private JScrollPane getSScrollPane() {
 		if (sScrollPane == null) {
 			sScrollPane = new JScrollPane();
-			sScrollPane.setViewportView(getTextArea());
+			sScrollPane.setViewportView(getSouthTextArea());
 		}
 		return sScrollPane;
 	}
-	private JTextArea getTextArea() {
-		if (textArea == null) {
-			textArea = new JTextArea();
-			textArea.setEditable(false);
+	public JTextArea getSouthTextArea() {
+		if (southTextArea == null) {
+			southTextArea = new JTextArea();
+			southTextArea.setEditable(false);
 		}
-		return textArea;
+		return southTextArea;
 	}
 	private JPopupMenu getPopupMenu() {
 		if (popupMenu == null) {
@@ -315,6 +321,11 @@ public class MenjacnicaGUI extends JFrame {
 	private JMenuItem getMntmDodajKurs() {
 		if (mntmDodajKurs == null) {
 			mntmDodajKurs = new JMenuItem("Dodaj kurs");
+			mntmDodajKurs.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.otvoriProzorDodajKursGUI();
+				}
+			});
 		}
 		return mntmDodajKurs;
 	}

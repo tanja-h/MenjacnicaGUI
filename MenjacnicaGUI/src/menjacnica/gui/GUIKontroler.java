@@ -1,8 +1,6 @@
 package menjacnica.gui;
 
 import java.awt.EventQueue;
-import java.io.File;
-
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
@@ -10,6 +8,7 @@ import javax.swing.JTextField;
 
 public class GUIKontroler {
 	private static MenjacnicaGUI menjacnicaGUI;
+	private static DodajKursGUI dodajKursGUI;
 	
 	public static String izaberiFajl(){
 		JFileChooser fc = new JFileChooser();
@@ -53,7 +52,20 @@ public class GUIKontroler {
 		JOptionPane.showMessageDialog(menjacnicaGUI, "@author:Tanja Hromin - FON");
 	}
 	
+	public static void otvoriProzorDodajKursGUI(){
+		GUIKontroler.dodajKursGUI = new DodajKursGUI();
+		dodajKursGUI.setVisible(true);
+	}
 	
+	public static void zatvoriProzorDodajKursGUI(){
+		dodajKursGUI.dispose();
+		dodajKursGUI = null;
+	}
+	
+	public static void dodajTekstUMenjacnicaGui(String kurs){
+		String noviTekst = menjacnicaGUI.getSouthTextArea().getText() + "\n" + kurs;
+		GUIKontroler.upisiText(noviTekst, menjacnicaGUI.getSouthTextArea());
+	}
 	
 	
 	/**
@@ -63,7 +75,7 @@ public class GUIKontroler {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					menjacnicaGUI = new MenjacnicaGUI();
+					GUIKontroler.menjacnicaGUI = new MenjacnicaGUI();
 					menjacnicaGUI.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
