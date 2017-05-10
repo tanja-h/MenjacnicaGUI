@@ -10,6 +10,7 @@ public class GUIKontroler {
 	private static MenjacnicaGUI menjacnicaGUI;
 	private static DodajKursGUI dodajKursGUI;
 	private static ObrisiKursGUI obrisiKursGUI;
+	private static IzvrsiZamenuGUI izvrsiZamenuGUI;
 	
 	public static String izaberiFajl(){
 		JFileChooser fc = new JFileChooser();
@@ -64,7 +65,7 @@ public class GUIKontroler {
 	}
 	
 	public static void dodajTekstUMenjacnicaGui(String kurs){
-		String noviTekst = menjacnicaGUI.getSouthTextArea().getText() + "\n" + kurs;
+		String noviTekst = "" + menjacnicaGUI.getSouthTextArea().getText() + kurs + "\n";
 		GUIKontroler.upisiText(noviTekst, menjacnicaGUI.getSouthTextArea());
 	}
 	
@@ -86,6 +87,15 @@ public class GUIKontroler {
 		}
 	}
 	
+	public static void otvoriProzorIzvrsiZamenuGUI(){
+		GUIKontroler.izvrsiZamenuGUI = new IzvrsiZamenuGUI();
+		izvrsiZamenuGUI.setVisible(true);
+	}
+	
+	public static void zatvoriProzorIzvrsiZamenuGUI() {
+		GUIKontroler.izvrsiZamenuGUI.dispose();
+		izvrsiZamenuGUI = null;
+	}
 	
 	/**
 	 * Launch the application.
@@ -102,5 +112,7 @@ public class GUIKontroler {
 			}
 		});
 	}
+
+
 
 }
