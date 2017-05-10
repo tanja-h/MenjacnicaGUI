@@ -185,7 +185,7 @@ public class DodajKursGUI extends JFrame {
 			btnDodaj = new JButton("Dodaj");
 			btnDodaj.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					String kurs = "\u0160ifra: " + textFieldSifra.getText()
+					String kurs = "Dodat kurs \n  \u0160ifra: " + textFieldSifra.getText()
 									+ " Naziv: " + textFieldNaziv.getText() 
 									+ "; Prodajni kurs: " + textFieldProdajniKurs.getText()
 									+ "; Kupovni kurs: " + textFieldKupovniKurs.getText()

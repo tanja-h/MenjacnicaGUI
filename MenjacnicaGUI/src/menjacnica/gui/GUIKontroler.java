@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 public class GUIKontroler {
 	private static MenjacnicaGUI menjacnicaGUI;
 	private static DodajKursGUI dodajKursGUI;
+	private static ObrisiKursGUI obrisiKursGUI;
 	
 	public static String izaberiFajl(){
 		JFileChooser fc = new JFileChooser();
@@ -65,6 +66,24 @@ public class GUIKontroler {
 	public static void dodajTekstUMenjacnicaGui(String kurs){
 		String noviTekst = menjacnicaGUI.getSouthTextArea().getText() + "\n" + kurs;
 		GUIKontroler.upisiText(noviTekst, menjacnicaGUI.getSouthTextArea());
+	}
+	
+	public static void otvoriProzorObrisiKursGUI(){
+		GUIKontroler.obrisiKursGUI = new ObrisiKursGUI();
+		obrisiKursGUI.setVisible(true);
+	}
+	
+	public static void zatvoriProzorObrisiKursGUI(){
+		obrisiKursGUI.dispose();
+		obrisiKursGUI = null;
+	}
+	
+	public static void cekiranoZaistaObrisi(){
+		if(obrisiKursGUI.getChckbxZaistaObrisiKurs().isSelected()){
+			obrisiKursGUI.getBtnObrisi().setEnabled(true);
+		} else {
+			obrisiKursGUI.getBtnObrisi().setEnabled(false);
+		}
 	}
 	
 	
